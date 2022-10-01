@@ -1,15 +1,38 @@
 import userData from "../constants/data";
 export default function Footer() {
   return (
-    <div className="bg-[#de2f98f9] ">
+    <div className="bg-pink-back ">
       <div className="max-w-6xl  mx-auto px-4 py-10 md:py-20">
         <div className="h-0.5 w-full bg-white dark:bg-gray-700"></div>
         <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between md:items-center mt-8">
           <div>
-            <p>© Jay Ramirez Dev. All Rights Reserved. </p>
+            <a href="https://jayramirez.dev" target="_blank">
+              © <span className="underline">Jay Ramirez Dev.</span> All Rights
+              Reserved.{" "}
+            </a>
           </div>
 
           <div className="space-x-4 flex flex-row items-center">
+            <a
+              href={userData.socialLinks.web}
+              target="_blank"
+              className="text-base font-normal text-gray-600 dark:text-gray-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="23"
+                fill="currentColor"
+                viewBox="0 0 402.617 402.617"
+              >
+                <path
+                  id="img_1_white"
+                  d="M223.964,119.282H385.013A104.682,104.682,0,0,1,489.695,223.964V272.28H385.013a56.367,56.367,0,0,0-56.366,56.367V449.43a8.051,8.051,0,1,0,16.1,0V328.646a40.26,40.26,0,0,1,40.26-40.26H489.69v96.631A104.682,104.682,0,0,1,385.008,489.7H223.964A104.682,104.682,0,0,1,119.282,385.017V352.809H240.066a56.367,56.367,0,0,0,56.367-56.366V175.648a8.051,8.051,0,1,0-16.1,0V296.432a40.26,40.26,0,0,1-40.26,40.26H119.282V223.959A104.682,104.682,0,0,1,223.964,119.277ZM505.8,280.331V223.964A120.784,120.784,0,0,0,385.013,103.18H223.964A120.784,120.784,0,0,0,103.18,223.964V385.013A120.784,120.784,0,0,0,223.964,505.8H385.013A120.784,120.784,0,0,0,505.8,385.013Z"
+                  transform="translate(-103.18 -103.18)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </a>
             <a
               href={userData.socialLinks.instagram}
               target="_blank"

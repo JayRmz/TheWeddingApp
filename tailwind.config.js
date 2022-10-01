@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        flip: "flip 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+      },
+      keyframes: {
+        flip: {
+          from: { transform: "rotateX(0deg)", transformOrigin: "50% bottom " },
+          to: { transform: "rotateX(180deg)", transformOrigin: "50% bottom " },
+        },
+      },
       colors: {
         // Configure your color palette here
         "principal-light": "#D4D2D2",
@@ -17,8 +26,8 @@ module.exports = {
         jade: "#034F60",
         lila: "#7C87F8",
         "principal-gray": "#d7e3e2",
-        "pink-back": "#fff1f0",
-        "pink-txt": "#e6aeaa",
+        "pink-back": "#FFC0CB",
+        "pink-txt": "#e67f90",
         "gray-txt": "#aae2e6",
         "pink-2": "#ffc0cb",
       },

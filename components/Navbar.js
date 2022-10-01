@@ -8,14 +8,14 @@ export default function Navbar() {
     <div className="max-w-6xl mx-auto px-4 py-5 md:py-10">
       <div className="flex md:flex-row justify-between items-center">
         <div className="flex flex-col">
-          <Link href="/">Logo?</Link>
+          <Link href="/">Les Chaparrines</Link>
         </div>
         <div className="space-x-8 hidden md:block">
           <Link href="/invitados">
             <a
               className={`text-base ${
                 router.asPath === "/invitados"
-                  ? "font-bold text-gray-txt underline"
+                  ? "font-bold text-stone-50 underline"
                   : "font-normal text-pink-txt"
               }`}
             >
@@ -26,7 +26,7 @@ export default function Navbar() {
             <a
               className={`text-base ${
                 router.asPath === "/mesa"
-                  ? "font-bold text-gray-txt underline"
+                  ? "font-bold text-stone-50 underline"
                   : "font-normal text-pink-txt"
               }`}
             >
@@ -38,7 +38,7 @@ export default function Navbar() {
             <a
               className={`text-base ${
                 router.asPath === "/salon"
-                  ? "font-bold text-gray-txt underline"
+                  ? "font-bold text-stone-50 underline"
                   : "font-normal text-pink-txt"
               }`}
             >
@@ -50,7 +50,7 @@ export default function Navbar() {
             <a
               className={`text-base ${
                 router.asPath === "/hospedaje"
-                  ? "font-bold text-gray-txt underline"
+                  ? "font-bold text-stone-50 underline"
                   : "font-normal text-pink-txt"
               }`}
             >

@@ -19,9 +19,9 @@ export default function ContainerBlock({ children, customMeta }) {
         <meta content={meta.description} name="description" />
         <link rel="shortcut icon" href="/icon.png" />
       </Head>
-      <main className="w-full h-screen bg-pink-back">
+      <main className="w-full h-full  bg-pink-back ">
         <Navbar />
-        <div className="bg-[#ff00ff]">{children}</div>
+        <div className="">{children}</div>
         <Footer />
       </main>
     </div>
