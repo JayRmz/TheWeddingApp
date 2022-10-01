@@ -6,7 +6,11 @@ export default function Footer() {
         <div className="h-0.5 w-full bg-white dark:bg-gray-700"></div>
         <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between md:items-center mt-8">
           <div>
-            <a href="https://jayramirez.dev" target="_blank">
+            <a
+              href="https://jayramirez.dev"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               © <span className="underline">Jay Ramirez Dev.</span> All Rights
               Reserved.{" "}
             </a>
@@ -16,6 +20,7 @@ export default function Footer() {
             <a
               href={userData.socialLinks.web}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-base font-normal text-gray-600 dark:text-gray-300"
             >
               <svg
@@ -36,6 +41,7 @@ export default function Footer() {
             <a
               href={userData.socialLinks.instagram}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-base font-normal text-gray-600 dark:text-gray-300"
             >
               <svg
@@ -52,6 +58,7 @@ export default function Footer() {
             <a
               href={userData.socialLinks.linkedin}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-base font-normal text-gray-600 dark:text-gray-300"
             >
               <svg
