@@ -3,14 +3,13 @@ import { useRouter } from "next/router";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-export default function ContainerBlock({ children, customMeta }) {
+export default function ContainerBlock({ children, title }) {
   const router = useRouter();
   const meta = {
-    title: "The Wedding App",
     description: "Chaparrito's wedding App",
     image: "",
     type: "webapp",
-    ...customMeta,
+    title: title,
   };
   return (
     <div>
@@ -25,7 +24,7 @@ export default function ContainerBlock({ children, customMeta }) {
       </Head>
       <main className="w-full h-full  bg-pink-back ">
         <Navbar />
-        <div className="">{children}</div>
+        <div>{children}</div>
         <Footer />
       </main>
     </div>

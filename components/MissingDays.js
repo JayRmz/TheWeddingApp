@@ -1,4 +1,4 @@
-import { Col, Row, Statistic } from "antd";
+import { Statistic } from "antd";
 const { Countdown } = Statistic;
 const deadline = new Date(2022, 10, 18, 19, 30, 0);
 
