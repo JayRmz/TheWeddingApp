@@ -8,7 +8,9 @@ export default function Navbar() {
     <div className="max-w-6xl mx-auto px-4 py-5 md:py-10">
       <div className="flex md:flex-row justify-between items-center">
         <div className="flex flex-col">
-          <Link href="/">Les Chaparrines</Link>
+          <Link href="/">
+            <a className="font-serif text-4xl drop-shadow-lg">R & R</a>
+          </Link>
         </div>
         <div className="space-x-8 hidden md:block">
           <Link href="/invitados">
