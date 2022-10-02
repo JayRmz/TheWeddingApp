@@ -26,7 +26,7 @@ export default function Invitados() {
           invitados: resposeData[key].no,
         });
         opts.push({
-          text: key,
+          id: key,
           value: resposeData[key].principal,
         });
       }
@@ -55,7 +55,7 @@ export default function Invitados() {
     getInvitados();
   }, []);
 
-  console.log(invitados, horarios);
+  // console.log(invitados, horarios);
   return (
     <ContainerBlock>
       <Title title="Invitados" />
@@ -66,7 +66,7 @@ export default function Invitados() {
       </p>
       <div className="grid p-10 grid-cols-1 md:grid-cols-2 bg-pink-800">
         <div className="self-center">
-          <InvitadosSearch invitados={invOptions} horarios={horarios} />
+          <InvitadosSearch invitados={invitados} horarios={horarios} />
         </div>
         <p>Hello</p>
       </div>
