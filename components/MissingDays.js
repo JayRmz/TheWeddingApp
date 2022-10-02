@@ -1,6 +1,6 @@
 import { Col, Row, Statistic } from "antd";
 const { Countdown } = Statistic;
-const deadline = new Date(2022, 10, 18, 18, 0, 0);
+const deadline = new Date(2022, 10, 18, 19, 30, 0);
 
 export default function MissingDays() {
   return (
