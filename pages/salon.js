@@ -1,4 +1,5 @@
 import ContainerBlock from "../components/ContainerBlock";
+import CustomMap from "../components/CustomMap";
 
 export default function Salon() {
   return (
@@ -12,6 +13,7 @@ export default function Salon() {
       >
         Airbnb
       </a>
+      <CustomMap />
     </ContainerBlock>
   );
 }

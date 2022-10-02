@@ -18,6 +18,10 @@ export default function ContainerBlock({ children, customMeta }) {
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
         <link rel="shortcut icon" href="/icon.png" />
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </Head>
       <main className="w-full h-full  bg-pink-back ">
         <Navbar />
