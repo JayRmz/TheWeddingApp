@@ -5,7 +5,12 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-export default function InvitadosSearch({ invitados, horarios }) {
+export default function InvitadosSearch({
+  invitados,
+  horarios,
+  onSelectInv,
+  onCancel,
+}) {
   const [value, setValue] = useState("");
 
   const onSearch = (searchText) => {
@@ -14,10 +19,14 @@ export default function InvitadosSearch({ invitados, horarios }) {
 
   const onSelect = (data) => {
     console.log("onSelect", data.target.value);
+    onSelectInv(data.target.value);
   };
 
   const onChange = (data) => {
     setValue(data);
+
+    console.log("value: ", value);
+    console.log("data: ", data);
   };
 
   return (

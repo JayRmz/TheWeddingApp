@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function Invitados() {
   const [invitados, setInvitados] = useState([]);
   const [horarios, setHorarios] = useState([]);
-  const [invOptions, setInvOptions] = useState([]);
+  const [selectedGuestInfo, setSelectedGuestInfo] = useState([]);
 
   useEffect(() => {
     async function getInvitados() {
@@ -16,22 +16,20 @@ export default function Invitados() {
       );
       const resposeData = await response.json();
       const loadedInv = [];
-      const opts = [];
 
       for (const key in resposeData) {
-        loadedInv.push({
-          id: key,
-          name: resposeData[key].principal,
-          horario: resposeData[key].horario,
-          invitados: resposeData[key].no,
-        });
-        opts.push({
-          id: key,
-          value: resposeData[key].principal,
-        });
+        if (!resposeData[key].confirmado) {
+          loadedInv.push({
+            id: key,
+            name: resposeData[key].principal,
+            horario: resposeData[key].horario,
+            invitados: resposeData[key].no,
+            conf: resposeData[key].confirmado,
+            noConf: resposeData[key].noConf,
+          });
+        }
       }
 
-      setInvOptions(opts);
       setInvitados(loadedInv);
     }
 
@@ -55,20 +53,32 @@ export default function Invitados() {
     getInvitados();
   }, []);
 
+  const selectInvHandler = (inv) => {
+    console.log("selected: ", inv);
+    console.log(invitados.filter((guest) => guest.name == inv));
+    setSelectedGuestInfo(invitados.filter((guest) => guest.name == inv));
+  };
+
   // console.log(invitados, horarios);
   return (
     <ContainerBlock>
       <Title title="Invitados" />
       <Description text="Ayúdanos a confirmar tu asistencia." />
-      <p className="px-10 text-md font-medium text-center">
+      <p className="px-10 text-md font-medium text-center pb-20 pt-5">
         Escribe tu nombre (o el principal de la familia) y confirma el número de
         invitados.
       </p>
-      <div className="grid p-10 grid-cols-1 md:grid-cols-2 bg-pink-800">
+      <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-800 h-96">
         <div className="self-center">
-          <InvitadosSearch invitados={invitados} horarios={horarios} />
+          <InvitadosSearch
+            invitados={invitados}
+            horarios={horarios}
+            onSelectInv={selectInvHandler}
+          />
         </div>
-        <p>Hello</p>
+        {selectedGuestInfo.length > 0 && (
+          <div>Hola:{selectedGuestInfo[0].name}</div>
+        )}
       </div>
     </ContainerBlock>
   );
