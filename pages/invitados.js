@@ -87,7 +87,7 @@ export default function Invitados() {
         Escribe tu nombre (o el principal de la familia) y confirma el número de
         invitados.
       </p>
-      <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-800 h-96">
+      <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-txt h-96">
         <div className="self-center">
           <Title title="Confirmación" />
           <InvitadosSearch

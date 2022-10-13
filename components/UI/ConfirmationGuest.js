@@ -18,7 +18,7 @@ export default function ConfirmationGuest({ open, onClose, guest }) {
             Los Esperamos en {guest.horario}
           </DialogContentText>
           <DialogContentText>
-            Tu número de mesa es: {guest.mesa}
+            Consulta más adelante tu número de mesa aquí mismo!
           </DialogContentText>
         </DialogContent>
         <DialogActions>

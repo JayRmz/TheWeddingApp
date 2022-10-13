@@ -20,8 +20,8 @@ export default function Mesa() {
             Liverpool
           </a>
         </div>
-        <div className="text-center font-mono text-2xl mt-40">
-          Num: <span className="bg-gray-50 text-black p-1 m-1">50851070</span>
+        <div className="text-center font-mono text-2xl mt-40 text-black">
+          Num: <span className="bg-gray-100 text-black p-1 m-1">50851070</span>
         </div>
       </div>
     </ContainerBlock>
