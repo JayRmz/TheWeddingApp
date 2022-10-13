@@ -4,7 +4,7 @@ import Title from "../components/UI/Title";
 
 export default function Mesa() {
   return (
-    <ContainerBlock>
+    <ContainerBlock title="R & R">
       <Title title="Mesa de regalos" />
       <div className="py-10">
         <Description text="El mejor regalo que nos puedes dar es tu prescencia pero si quieres obsequiarnos algo puedes hacerlo en." />
@@ -20,8 +20,9 @@ export default function Mesa() {
             Liverpool
           </a>
         </div>
-        <div className="text-center font-mono text-2xl mt-40 text-black">
-          Num: <span className="bg-gray-100 text-black p-1 m-1">50851070</span>
+        <div className="text-center font-mono text-2xl mt-40 text-black-txt">
+          Num:{" "}
+          <span className="bg-gray-100 text-black-txt p-1 m-1">50851070</span>
         </div>
       </div>
     </ContainerBlock>

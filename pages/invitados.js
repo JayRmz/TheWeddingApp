@@ -13,6 +13,7 @@ export default function Invitados() {
   const [selectedGuestInfo, setSelectedGuestInfo] = useState([]);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [guestSchedule, setGuestSchedule] = useState("");
+  const [isCancel, setIsCancel] = useState(false);
 
   useEffect(() => {
     async function getInvitados() {
@@ -70,6 +71,12 @@ export default function Invitados() {
 
   const onConfirmedAssistance = () => {
     setOpenConfirmation(true);
+    setIsCancel(false);
+  };
+
+  const onCanceledAssistance = () => {
+    setOpenConfirmation(true);
+    setIsCancel(true);
   };
 
   const closeConfirmation = () => {
@@ -80,10 +87,10 @@ export default function Invitados() {
 
   // console.log(invitados, horarios);
   return (
-    <ContainerBlock>
+    <ContainerBlock title="R & R">
       <Title title="Invitados" />
       <Description text="Ayúdanos a confirmar tu asistencia." />
-      <p className="px-10 text-md font-medium text-center pb-20 pt-5">
+      <p className="px-10 text-md font-medium text-center pb-20 pt-5 text-black-txt">
         Escribe tu nombre (o el principal de la familia) y confirma el número de
         invitados.
       </p>
@@ -100,6 +107,7 @@ export default function Invitados() {
           <GuestCard
             guest={selectedGuestInfo[0]}
             onConfirmedAssistance={onConfirmedAssistance}
+            onCanceledAssistance={onCanceledAssistance}
           />
         )}
 
@@ -109,6 +117,7 @@ export default function Invitados() {
             guest={selectedGuestInfo[0]}
             onClose={closeConfirmation}
             schedules={horarios}
+            isCancel={isCancel}
           />
         )}
       </div>
