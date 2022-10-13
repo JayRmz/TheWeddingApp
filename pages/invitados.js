@@ -85,7 +85,7 @@ export default function Invitados() {
       <Description text="Ayúdanos a confirmar tu asistencia." />
       <p className="px-10 text-md font-medium text-center pb-20 pt-5">
         Escribe tu nombre (o el principal de la familia) y confirma el número de
-        invitados. {invitados.length}
+        invitados.
       </p>
       <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-800 h-96">
         <div className="self-center">
