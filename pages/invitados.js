@@ -3,6 +3,7 @@ import Title from "../components/UI/Title";
 import Description from "../components/UI/Descrption";
 import InvitadosSearch from "../components/UI/InvitadosSearch";
 import { useEffect, useState } from "react";
+import GuestCard from "../components/UI/GuestCard";
 
 export default function Invitados() {
   const [invitados, setInvitados] = useState([]);
@@ -76,8 +77,11 @@ export default function Invitados() {
             onSelectInv={selectInvHandler}
           />
         </div>
-        {selectedGuestInfo.length > 0 && (
+        {/* {selectedGuestInfo.length > 0 && (
           <div>Hola:{selectedGuestInfo[0].name}</div>
+        )} */}
+        {selectedGuestInfo.length > 0 && (
+          <GuestCard guest={selectedGuestInfo[0]} />
         )}
       </div>
     </ContainerBlock>

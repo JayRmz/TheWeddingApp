@@ -21,8 +21,23 @@ export default function Salon() {
             height={400}
           />
           <div>
-            <div className="p-10">
-              <CustomMap />
+            <div className="grid grid-rows-2 p-5">
+              <div className="grid grid-cols-1 p-3">
+                <Image
+                  src={"/img/R1.png"}
+                  alt="Salón las cruces"
+                  width={400}
+                  height={350}
+                />
+              </div>
+              <div className="grid grid-cols-1 p-3">
+                <Image
+                  src={"/img/r2.png"}
+                  alt="Salón las cruces"
+                  width={400}
+                  height={350}
+                />
+              </div>
             </div>
 
             <p className="text-center justify-self-center p-10 md:p-20">
@@ -30,20 +45,26 @@ export default function Salon() {
             </p>
             <div className="grid justify-items-stretch grid-cols-3 md:px-20 text-center pb-3">
               <a
-                href="https://goo.gl/maps/ciUd3HU8xrZjCU1Z8"
-                className="justify-self-auto underline"
+                href="https://goo.gl/maps/XCahocz6SwrFK3377"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-normal"
               >
                 Google Maps
               </a>
               <a
-                className="justify-self-auto underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-normal"
                 href="https://www.waze.com/en/live-map/directions/mx/n.l./cd-apodaca/eventos-or-bodas-apodaca-or-las-cruces-eventos?place=ChIJuUJxKzvvYoYR6z1kqzQGYUI"
               >
                 Waze
               </a>
               <a
                 href="https://maps.apple.com/?address=Apodaca,%20Nuevo%20Le%C3%B3n,%20M%C3%A9xico&auid=15936924153735466449&ll=25.797977,-100.114197&lsp=9902&q=Las%20Cruces%20Eventos&_ext=CisKBQgEEKUBCgQIBRADCgQIBhARCgQIChAACgQIUhABCgQIVRAPCgQIWRACEiQpOR593TPMOUAxj3HFxVEHWcA5+nKwSF3MOUBBLbDHREoHWcA%3D"
-                className="underline justify-self-auto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-normal"
               >
                 Apple Maps
               </a>

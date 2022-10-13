@@ -23,10 +23,15 @@ export default function InvitadosSearch({
   };
 
   const onChange = (data) => {
-    setValue(data);
+    console.log("On Change:");
+    onSelectInv(null);
 
     console.log("value: ", value);
-    console.log("data: ", data);
+    console.log("data: ", data.target.value);
+  };
+
+  const onCancelClicked = (data) => {
+    console.log("On Cancel:", data);
   };
 
   return (
@@ -37,6 +42,7 @@ export default function InvitadosSearch({
         options={invitados}
         autoHighlight
         onSelect={onSelect}
+        onChange={onChange}
         getOptionLabel={(option) => option.name}
         renderOption={(props, option) => (
           <Box

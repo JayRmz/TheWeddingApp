@@ -1,8 +1,10 @@
 import { Statistic } from "antd";
+import { useState } from "react";
 const { Countdown } = Statistic;
-const deadline = new Date(2022, 10, 18, 19, 30, 0);
+// const deadline = new Date(2022, 10, 18, 19, 30, 0);
 
 export default function MissingDays() {
+  const [deadline, setDeadline] = useState(new Date(2022, 10, 18, 19, 30, 0));
   return (
     <div className="bg-gradient-to-r from-transparent to-pink-500 p-10 mx-5 p-10 text-center">
       <p className="text-bold text-2xl text-center font-serif">

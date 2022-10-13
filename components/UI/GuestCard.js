@@ -1,3 +1,3 @@
 export default function GuestCard({ guest }) {
-  return;
+  return <div>Hola:{guest.name}</div>;
 }
