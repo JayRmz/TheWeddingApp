@@ -4,11 +4,15 @@ import Description from "../components/UI/Descrption";
 import InvitadosSearch from "../components/UI/InvitadosSearch";
 import { useEffect, useState } from "react";
 import GuestCard from "../components/UI/GuestCard";
+import ConfirmationGuest from "../components/UI/ConfirmationGuest";
+import Router from "next/router";
 
 export default function Invitados() {
   const [invitados, setInvitados] = useState([]);
   const [horarios, setHorarios] = useState([]);
   const [selectedGuestInfo, setSelectedGuestInfo] = useState([]);
+  const [openConfirmation, setOpenConfirmation] = useState(false);
+  const [guestSchedule, setGuestSchedule] = useState("");
 
   useEffect(() => {
     async function getInvitados() {
@@ -28,6 +32,7 @@ export default function Invitados() {
             conf: resposeData[key].confirmado,
             noConf: resposeData[key].noConf,
             acompanantes: resposeData[key].acompanantes,
+            mesa: resposeData[key].mesa,
           });
         }
       }
@@ -40,6 +45,7 @@ export default function Invitados() {
         "https://the-wedding-app-96e78-default-rtdb.firebaseio.com/itinerarios.json"
       );
       const responseData = await response.json();
+
       const loadedItinierario = [];
       for (const key in responseData) {
         loadedItinierario.push({
@@ -48,6 +54,7 @@ export default function Invitados() {
           hora: responseData[key].hora,
         });
       }
+      console.log("FETCH HORARIOS", loadedItinierario);
       setHorarios(loadedItinierario);
     }
 
@@ -59,6 +66,16 @@ export default function Invitados() {
     console.log("selected: ", inv);
     console.log(invitados.filter((guest) => guest.name == inv));
     setSelectedGuestInfo(invitados.filter((guest) => guest.name == inv));
+  };
+
+  const onConfirmedAssistance = () => {
+    setOpenConfirmation(true);
+  };
+
+  const closeConfirmation = () => {
+    setOpenConfirmation(false);
+    selectInvHandler(null);
+    Router.reload(window.location.pathname);
   };
 
   // console.log(invitados, horarios);
@@ -79,7 +96,19 @@ export default function Invitados() {
           />
         </div>
         {selectedGuestInfo.length > 0 && (
-          <GuestCard guest={selectedGuestInfo[0]} />
+          <GuestCard
+            guest={selectedGuestInfo[0]}
+            onConfirmedAssistance={onConfirmedAssistance}
+          />
+        )}
+
+        {openConfirmation && (
+          <ConfirmationGuest
+            open={openConfirmation}
+            guest={selectedGuestInfo[0]}
+            onClose={closeConfirmation}
+            schedules={horarios}
+          />
         )}
       </div>
     </ContainerBlock>

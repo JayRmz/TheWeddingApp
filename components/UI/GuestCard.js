@@ -9,8 +9,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Title from "./Title";
 import { useState } from "react";
+import axios from "axios";
 
-export default function GuestCard({ guest }) {
+export default function GuestCard({ guest, onConfirmedAssistance }) {
   const [conf, setConf] = useState("");
   const handleChange = (event) => {
     setConf(event.target.value);
@@ -22,16 +23,16 @@ export default function GuestCard({ guest }) {
       guest.conf = true;
       guest.noConf = conf;
 
-      const resp = await fetch(
-        `https://the-wedding-app-96e78-default-rtdb.firebaseio.com/confirmados.json/`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            guest,
-          }),
-        }
+      const response = await axios.put(
+        `https://the-wedding-app-96e78-default-rtdb.firebaseio.com/invitados/${guest.id}/noConf.json`,
+        guest.noConf
       );
-      console.log(resp);
+      const repsonse2 = await axios.put(
+        `https://the-wedding-app-96e78-default-rtdb.firebaseio.com/invitados/${guest.id}/confirmado.json`,
+        true
+      );
+
+      onConfirmedAssistance();
     }
   };
 
