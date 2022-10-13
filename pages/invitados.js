@@ -89,6 +89,7 @@ export default function Invitados() {
       </p>
       <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-800 h-96">
         <div className="self-center">
+          <Title title="Confirmación" />
           <InvitadosSearch
             invitados={invitados}
             horarios={horarios}
