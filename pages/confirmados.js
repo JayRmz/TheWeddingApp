@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ContainerBlock from "../components/ContainerBlock";
 import Description from "../components/UI/Descrption";
@@ -29,9 +28,8 @@ export default function Confirmados() {
             noConf: responseData[key].noConf,
             acompanantes: responseData[key].acompanantes,
             mesa: responseData[key].mesa,
+            bebida: responseData[key].bebida,
           });
-          console.log("BOletos: ", responseData[key].noConf);
-          setTotalConfirmados(totalConfirmados + responseData[key].noConf);
         } else if (responseData[key].confirmado) {
           loadedCanc.push({
             id: key,
@@ -53,6 +51,33 @@ export default function Confirmados() {
     getInvitados();
   }, []);
 
+  useEffect(() => {
+    console.log("CONFIRMADOS");
+    let total = 0;
+    for (const conf in confirmados) {
+      console.log(confirmados[conf].noConf);
+      total += confirmados[conf].noConf;
+    }
+    setTotalConfirmados(total);
+  }, [confirmados]);
+
+  function renderSwitch(param) {
+    switch (param) {
+      case 0:
+        return "Brandi";
+      case 1:
+        return "Cerveza";
+      case 2:
+        return "Ron";
+      case 3:
+        return "Tequila";
+      case 4:
+        return "Whiskey";
+      default:
+        return "NO CONTESTO";
+    }
+  }
+
   return (
     <ContainerBlock title="Confirmados">
       <Title title="Invitados" />
@@ -64,15 +89,19 @@ export default function Confirmados() {
             Total boletos: {totalConfirmados}
           </div>
           {confirmados.map((inv) => (
-            <div className="text-center text-black-txt" key={inv.id}>
-              Invitado: {inv.name} Confirmados: {inv.noConf}
+            <div className="text-center text-black-txt p-5" key={inv.id}>
+              <p className="text-lg"> Inivitado: {inv.name} </p>
+              <div className="grid grid-cols-2">
+                <p>Boletos: {inv.noConf} </p>
+                <p>Bebida: {renderSwitch(inv.bebida)} </p>
+              </div>
             </div>
           ))}
         </div>
         <div>
           <Description text="Cancelados" />
           <div className="text-center text-black-txt">
-            Total invitados: {cancelados.length}
+            Total cancelados: {cancelados.length}
           </div>
           {cancelados.map((inv) => (
             <div className="text-center text-black-txt" key={inv.id}>

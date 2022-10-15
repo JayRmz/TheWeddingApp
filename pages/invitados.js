@@ -12,7 +12,6 @@ export default function Invitados() {
   const [horarios, setHorarios] = useState([]);
   const [selectedGuestInfo, setSelectedGuestInfo] = useState([]);
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [guestSchedule, setGuestSchedule] = useState("");
   const [isCancel, setIsCancel] = useState(false);
 
   useEffect(() => {
@@ -34,6 +33,7 @@ export default function Invitados() {
             noConf: resposeData[key].noConf,
             acompanantes: resposeData[key].acompanantes,
             mesa: resposeData[key].mesa,
+            bebida: resposeData[key].bebida,
           });
         }
       }
