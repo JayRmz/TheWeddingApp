@@ -72,6 +72,7 @@ export default function ConfirmationGuest({ open, onClose, guest, isCancel }) {
                   <MenuItem value={2}>Ron</MenuItem>
                   <MenuItem value={3}>Tequila</MenuItem>
                   <MenuItem value={4}>Whiskey</MenuItem>
+                  <MenuItem value={5}>Gracias, no tomo</MenuItem>
                 </Select>
               </FormControl>
             </Box>

@@ -90,9 +90,12 @@ export default function Invitados() {
     <ContainerBlock title="R & R">
       <Title title="Invitados" />
       <Description text="Ayúdanos a confirmar tu asistencia." />
-      <p className="px-10 text-md font-medium text-center pb-20 pt-5 text-black-txt">
+      <p className="px-5 text-md font-medium text-center  pt-5 text-black-txt">
         Escribe tu nombre (o el principal de la familia) y confirma el número de
         invitados.
+      </p>
+      <p className="text-md font-medium text-center py-5 text-black-txt">
+        Código de Vestimenta: <span className="text-bold text-xl">FORMAL</span>
       </p>
       <div className="grid p-5 grid-cols-1 md:grid-cols-2 bg-pink-txt h-96">
         <div className="self-center">

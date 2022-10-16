@@ -73,8 +73,10 @@ export default function Confirmados() {
         return "Tequila";
       case 4:
         return "Whiskey";
+      case 5:
+        return "No toma";
       default:
-        return "NO CONTESTO";
+        return "NO CONTESTó";
     }
   }
 
