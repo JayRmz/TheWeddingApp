@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ConfirmationGuest({ open, onClose, guest, isCancel }) {
-  const [selectedDrink, setSelectedDrink] = useState(0);
+  const [selectedDrink, setSelectedDrink] = useState(null);
 
   const handleSelectedDrink = (event) => {
     setSelectedDrink(event.target.value);
