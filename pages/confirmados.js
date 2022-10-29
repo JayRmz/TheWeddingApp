@@ -10,6 +10,13 @@ export default function Confirmados() {
   const [totalConfirmados, setTotalConfirmados] = useState(0);
   const [totalCancelados, setTotalCancelados] = useState(0);
   const [totalPorConf, setTotalPorConf] = useState(0);
+  const [totalTequila, setTotalTequila] = useState(0);
+  const [totalWhiskey, setTotalWhiskey] = useState(0);
+  const [totalCerveza, setTotalCerveza] = useState(0);
+  const [totalBrandi, setTotalBrandi] = useState(0);
+  const [totalRon, setTotalRon] = useState(0);
+  const [totalNoCont, setTotalNoCont] = useState(0);
+  const [totalNoToma, setTotalNoToma] = useState(0);
 
   useEffect(() => {
     async function getInvitados() {
@@ -20,6 +27,14 @@ export default function Confirmados() {
       const loadedConf = [];
       const loadedCanc = [];
       const loadedPorConf = [];
+
+      let tequila = 0;
+      let cerveza = 0;
+      let whiskey = 0;
+      let brandi = 0;
+      let ron = 0;
+      let notoma = 0;
+      let nocont = 0;
 
       for (const key in responseData) {
         if (responseData[key].confirmado && responseData[key].noConf > 0) {
@@ -34,6 +49,30 @@ export default function Confirmados() {
             mesa: responseData[key].mesa,
             bebida: responseData[key].bebida,
           });
+          switch (responseData[key].bebida) {
+            case 0:
+              brandi += 1;
+              break;
+            case 1:
+              cerveza += 1;
+              break;
+            case 2:
+              ron += 1;
+              break;
+            case 3:
+              tequila += 1;
+              break;
+            case 4:
+              whiskey += 1;
+              break;
+            case 5:
+              notoma += 1;
+              break;
+
+            default:
+              nocont += 1;
+              break;
+          }
         } else if (responseData[key].confirmado) {
           loadedCanc.push({
             id: key,
@@ -62,6 +101,14 @@ export default function Confirmados() {
       setConfirmados(loadedConf);
       setCancelados(loadedCanc);
       setPorConf(loadedPorConf);
+
+      setTotalBrandi(brandi);
+      setTotalCerveza(cerveza);
+      setTotalTequila(tequila);
+      setTotalWhiskey(whiskey);
+      setTotalRon(ron);
+      setTotalNoCont(nocont);
+      setTotalNoToma(notoma);
     }
 
     getInvitados();
@@ -124,6 +171,25 @@ export default function Confirmados() {
       <Description
         text={`Boletos: ${totalCancelados + totalPorConf + totalConfirmados}`}
       />
+
+      <Description text={`Bebidas ${confirmados.length}`} />
+      <div className="grid grid-cols-7">
+        <div className="text-center text-black-txt">Brandis: {totalBrandi}</div>
+        <div className="text-center text-black-txt">
+          Tequila: {totalTequila}
+        </div>
+        <div className="text-center text-black-txt">
+          Cerveza: {totalCerveza}
+        </div>
+        <div className="text-center text-black-txt">Ron: {totalRon}</div>
+        <div className="text-center text-black-txt">
+          Whiskey: {totalWhiskey}
+        </div>
+        <div className="text-center text-black-txt">No Toma: {totalNoToma}</div>
+        <div className="text-center text-black-txt">
+          No Contesto: {totalNoCont}
+        </div>
+      </div>
 
       <div className="grid grid-cols-3">
         <div>
