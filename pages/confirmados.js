@@ -6,7 +6,10 @@ import Title from "../components/UI/Title";
 export default function Confirmados() {
   const [confirmados, setConfirmados] = useState([]);
   const [cancelados, setCancelados] = useState([]);
+  const [porConf, setPorConf] = useState([]);
   const [totalConfirmados, setTotalConfirmados] = useState(0);
+  const [totalCancelados, setTotalCancelados] = useState(0);
+  const [totalPorConf, setTotalPorConf] = useState(0);
 
   useEffect(() => {
     async function getInvitados() {
@@ -16,6 +19,7 @@ export default function Confirmados() {
       const responseData = await response.json();
       const loadedConf = [];
       const loadedCanc = [];
+      const loadedPorConf = [];
 
       for (const key in responseData) {
         if (responseData[key].confirmado && responseData[key].noConf > 0) {
@@ -41,11 +45,23 @@ export default function Confirmados() {
             acompanantes: responseData[key].acompanantes,
             mesa: responseData[key].mesa,
           });
+        } else {
+          loadedPorConf.push({
+            id: key,
+            name: responseData[key].principal,
+            horario: responseData[key].horario,
+            invitados: responseData[key].no,
+            conf: responseData[key].confirmado,
+            noConf: responseData[key].noConf,
+            acompanantes: responseData[key].acompanantes,
+            mesa: responseData[key].mesa,
+          });
         }
       }
 
       setConfirmados(loadedConf);
       setCancelados(loadedCanc);
+      setPorConf(loadedPorConf);
     }
 
     getInvitados();
@@ -53,13 +69,34 @@ export default function Confirmados() {
 
   useEffect(() => {
     console.log("CONFIRMADOS");
-    let total = 0;
-    for (const conf in confirmados) {
-      console.log(confirmados[conf].noConf);
-      total += confirmados[conf].noConf;
+    function effectconfirmados() {
+      let total = 0;
+      for (const conf in confirmados) {
+        console.log(confirmados[conf].noConf);
+        total += confirmados[conf].noConf;
+      }
+      setTotalConfirmados(total);
     }
-    setTotalConfirmados(total);
-  }, [confirmados]);
+
+    function effectcancelados() {
+      let total = 0;
+      for (const canc in cancelados) {
+        total += cancelados[canc].invitados;
+      }
+      setTotalCancelados(total);
+    }
+
+    function effectporconf() {
+      let total = 0;
+      for (const canc in porConf) {
+        total += porConf[canc].invitados;
+      }
+      setTotalPorConf(total);
+    }
+    effectconfirmados();
+    effectcancelados();
+    effectporconf();
+  }, [confirmados, cancelados, porConf]);
 
   function renderSwitch(param) {
     switch (param) {
@@ -84,7 +121,11 @@ export default function Confirmados() {
     <ContainerBlock title="Confirmados">
       <Title title="Invitados" />
 
-      <div className="grid grid-cols-2">
+      <Description
+        text={`Boletos: ${totalCancelados + totalPorConf + totalConfirmados}`}
+      />
+
+      <div className="grid grid-cols-3">
         <div>
           <Description text="Confirmados" />
           <div className="text-center text-black-txt">
@@ -103,11 +144,22 @@ export default function Confirmados() {
         <div>
           <Description text="Cancelados" />
           <div className="text-center text-black-txt">
-            Total cancelados: {cancelados.length}
+            Total cancelados: {totalCancelados}
           </div>
           {cancelados.map((inv) => (
             <div className="text-center text-black-txt" key={inv.id}>
-              {inv.name}
+              Invitado: {inv.name} | Boletos: {inv.invitados}
+            </div>
+          ))}
+        </div>
+        <div>
+          <Description text="Por Confirmar" />
+          <div className="text-center text-black-txt">
+            Total x conf: {totalPorConf}
+          </div>
+          {porConf.map((inv) => (
+            <div className="text-center text-black-txt" key={inv.id}>
+              Invitado: {inv.name} | Boletos: {inv.invitados}
             </div>
           ))}
         </div>
