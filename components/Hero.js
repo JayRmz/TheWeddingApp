@@ -8,7 +8,7 @@ export default function Hero() {
           alt="wedding"
           width={1920}
           height={1080}
-          src="/img/weddingback1.jpeg"
+          src="/img/AnayRicardo-266.jpg"
         />
       </div>
     </div>
