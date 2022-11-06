@@ -168,9 +168,7 @@ export default function Confirmados() {
     <ContainerBlock title="Confirmados">
       <Title title="Invitados" />
 
-      <Description
-        text={`Boletos: ${totalCancelados + totalPorConf + totalConfirmados}`}
-      />
+      <Description text={`Boletos: ${totalPorConf + totalConfirmados}`} />
 
       <Description text={`Bebidas ${confirmados.length}`} />
       <div className="grid grid-cols-7">
