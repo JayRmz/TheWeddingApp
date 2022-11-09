@@ -238,7 +238,9 @@ export default function Confirmados() {
                 <TableRow key={inv.id}>
                   <TableCell align="right">{inv.id.toUpperCase()}</TableCell>
                   <TableCell align="right">{inv.name}</TableCell>
-                  <TableCell align="right">{inv.noConf}</TableCell>
+                  <TableCell align="right">
+                    {inv.noConf} de {inv.invitados}
+                  </TableCell>
                   <TableCell align="right">{inv.horario}</TableCell>
                   <TableCell align="right">{inv.acompanantes}</TableCell>
                   <TableCell align="right">{inv.mesa}</TableCell>
