@@ -226,7 +226,7 @@ export default function Confirmados() {
               <TableRow>
                 <TableCell align="right">Folio</TableCell>
                 <TableCell align="right">Invitado</TableCell>
-                <TableCell align="right">Boletos</TableCell>
+                <TableCell align="right">Confirmados</TableCell>
                 <TableCell align="right">Horario</TableCell>
                 <TableCell align="right">Acompañante</TableCell>
                 <TableCell align="right">Mesa</TableCell>
@@ -238,7 +238,7 @@ export default function Confirmados() {
                 <TableRow key={inv.id}>
                   <TableCell align="right">{inv.id.toUpperCase()}</TableCell>
                   <TableCell align="right">{inv.name}</TableCell>
-                  <TableCell align="right">{inv.invitados}</TableCell>
+                  <TableCell align="right">{inv.noConf}</TableCell>
                   <TableCell align="right">{inv.horario}</TableCell>
                   <TableCell align="right">{inv.acompanantes}</TableCell>
                   <TableCell align="right">{inv.mesa}</TableCell>
