@@ -1,7 +1,16 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import ContainerBlock from "../components/ContainerBlock";
 import Description from "../components/UI/Descrption";
 import Title from "../components/UI/Title";
+import Paper from "@mui/material/Paper";
 
 export default function Confirmados() {
   const [confirmados, setConfirmados] = useState([]);
@@ -168,65 +177,138 @@ export default function Confirmados() {
     <ContainerBlock title="Confirmados">
       <Title title="Invitados" />
 
+      {/* Boletos */}
       <Description text={`Boletos: ${totalPorConf + totalConfirmados}`} />
 
-      <Description text={`Bebidas ${confirmados.length}`} />
-      <div className="grid grid-cols-7">
-        <div className="text-center text-black-txt">Brandis: {totalBrandi}</div>
-        <div className="text-center text-black-txt">
-          Tequila: {totalTequila}
-        </div>
-        <div className="text-center text-black-txt">
-          Cerveza: {totalCerveza}
-        </div>
-        <div className="text-center text-black-txt">Ron: {totalRon}</div>
-        <div className="text-center text-black-txt">
-          Whiskey: {totalWhiskey}
-        </div>
-        <div className="text-center text-black-txt">No Toma: {totalNoToma}</div>
-        <div className="text-center text-black-txt">
-          No Contesto: {totalNoCont}
-        </div>
+      {/*  X confirmar */}
+      <div className="m-5">
+        <p className="py-3 text-lg text-black-txt">
+          Invitados <span className="font-bold">por confirmar</span>:{" "}
+          {totalPorConf}
+        </p>
+        <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+          <Table stickyHeader aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">Folio</TableCell>
+                <TableCell align="right">Invitado</TableCell>
+                <TableCell align="right">Boletos</TableCell>
+                <TableCell align="right">Horario</TableCell>
+                <TableCell align="right">Acompañante</TableCell>
+                <TableCell align="right">Mesa</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {porConf.map((inv) => (
+                <TableRow key={inv.id}>
+                  <TableCell align="right">{inv.id.toUpperCase()}</TableCell>
+                  <TableCell align="right">{inv.name}</TableCell>
+                  <TableCell align="right">{inv.invitados}</TableCell>
+                  <TableCell align="right">{inv.horario}</TableCell>
+                  <TableCell align="right">{inv.acompanantes}</TableCell>
+                  <TableCell align="right">{inv.mesa}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
 
-      <div className="grid grid-cols-3">
-        <div>
-          <Description text="Confirmados" />
-          <div className="text-center text-black-txt">
-            Total boletos: {totalConfirmados}
-          </div>
-          {confirmados.map((inv) => (
-            <div className="text-center text-black-txt p-5" key={inv.id}>
-              <p className="text-lg"> Inivitado: {inv.name} </p>
-              <div className="grid grid-cols-2">
-                <p>Boletos: {inv.noConf} </p>
-                <p>Bebida: {renderSwitch(inv.bebida)} </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div>
-          <Description text="Cancelados" />
-          <div className="text-center text-black-txt">
-            Total cancelados: {totalCancelados}
-          </div>
-          {cancelados.map((inv) => (
-            <div className="text-center text-black-txt" key={inv.id}>
-              Invitado: {inv.name} | Boletos: {inv.invitados}
-            </div>
-          ))}
-        </div>
-        <div>
-          <Description text="Por Confirmar" />
-          <div className="text-center text-black-txt">
-            Total x conf: {totalPorConf}
-          </div>
-          {porConf.map((inv) => (
-            <div className="text-center text-black-txt" key={inv.id}>
-              Invitado: {inv.name} | Boletos: {inv.invitados}
-            </div>
-          ))}
-        </div>
+      {/* Confrimados */}
+      <div className="m-5">
+        <p className="py-3 text-lg text-black-txt">
+          Invitados <span className="font-bold">Confirmados</span>:{" "}
+          {totalConfirmados}
+        </p>
+        <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+          <Table stickyHeader aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">Folio</TableCell>
+                <TableCell align="right">Invitado</TableCell>
+                <TableCell align="right">Boletos</TableCell>
+                <TableCell align="right">Horario</TableCell>
+                <TableCell align="right">Acompañante</TableCell>
+                <TableCell align="right">Mesa</TableCell>
+                <TableCell align="right">Bebida</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {confirmados.map((inv) => (
+                <TableRow key={inv.id}>
+                  <TableCell align="right">{inv.id.toUpperCase()}</TableCell>
+                  <TableCell align="right">{inv.name}</TableCell>
+                  <TableCell align="right">{inv.invitados}</TableCell>
+                  <TableCell align="right">{inv.horario}</TableCell>
+                  <TableCell align="right">{inv.acompanantes}</TableCell>
+                  <TableCell align="right">{inv.mesa}</TableCell>
+                  <TableCell align="right">
+                    {renderSwitch(inv.bebida)}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+
+      <div className="m-5">
+        <p className="py-3 text-lg text-black-txt">
+          Invitados <span className="font-bold">Cancelados</span>:{" "}
+          {totalCancelados}
+        </p>
+        <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+          <Table stickyHeader aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">Folio</TableCell>
+                <TableCell align="right">Invitado</TableCell>
+                <TableCell align="right">Boletos</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {cancelados.map((inv) => (
+                <TableRow key={inv.id}>
+                  <TableCell align="right">{inv.id.toUpperCase()}</TableCell>
+                  <TableCell align="right">{inv.name}</TableCell>
+                  <TableCell align="right">{inv.invitados}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+
+      <div className="m-5">
+        <p className="py-3 text-lg text-black-txt">Bebidas</p>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">Brandis</TableCell>
+                <TableCell align="right">Tequila</TableCell>
+                <TableCell align="right">Cerveza</TableCell>
+                <TableCell align="right">Ron</TableCell>
+                <TableCell align="right">Whiskey</TableCell>
+                <TableCell align="right">No Toma</TableCell>
+                <TableCell align="right">No Contesto</TableCell>
+                <TableCell align="right">TOTAL</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell align="right">{totalBrandi}</TableCell>
+                <TableCell align="right">{totalTequila}</TableCell>
+                <TableCell align="right">{totalCerveza}</TableCell>
+                <TableCell align="right">{totalRon}</TableCell>
+                <TableCell align="right">{totalWhiskey}</TableCell>
+                <TableCell align="right">{totalNoToma}</TableCell>
+                <TableCell align="right">{totalNoCont}</TableCell>
+                <TableCell align="right">{confirmados.length}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     </ContainerBlock>
   );
