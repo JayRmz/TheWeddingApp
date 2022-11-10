@@ -15,6 +15,17 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="space-x-8 hidden md:block">
+          <Link href="/mimesa">
+            <a
+              className={`text-base ${
+                router.asPath === "/mimesa"
+                  ? "font-bold text-pink-txt underline"
+                  : "font-normal  text-black-txt"
+              }`}
+            >
+              Mi Mesa
+            </a>
+          </Link>
           <Link href="/invitados">
             <a
               className={`text-base ${
@@ -64,6 +75,9 @@ export default function Navbar() {
         </div>
       </div>
       <div className="space-x-8 block md:hidden mt-4">
+        <Link href="/mimesa">
+          <a className="text-base font-normal text-black-txt">Mi Mesa</a>
+        </Link>
         <Link href="/invitados">
           <a className="text-base font-normal text-black-txt">Invitados</a>
         </Link>

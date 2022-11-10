@@ -5,12 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-export default function InvitadosSearch({
-  invitados,
-  horarios,
-  onSelectInv,
-  onCancel,
-}) {
+export default function InvitadosSearch({ invitados, onSelectInv }) {
   const [value, setValue] = useState("");
 
   const onSearch = (searchText) => {
@@ -37,29 +32,33 @@ export default function InvitadosSearch({
   return (
     <div className="p-1">
       <Autocomplete
-        id="country-select-demo"
         sx={{ width: 270 }}
         options={invitados}
         autoHighlight
+        filterOptions={(value) => {
+          console.log("FILTER OPRIONS val:", value);
+          return value;
+        }}
         onSelect={onSelect}
         onChange={onChange}
         getOptionLabel={(option) => option.name}
-        renderOption={(props, option) => (
-          <Box
-            component="li"
-            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-            {...props}
-          >
-            {option.name}
-          </Box>
-        )}
+        renderOption={(props, option) => {
+          return (
+            <Box
+              component="li"
+              sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+              {...props}
+            >
+              {option.name}
+            </Box>
+          );
+        }}
         renderInput={(params) => (
           <TextField
             {...params}
             label="Escribe tu nombre"
             inputProps={{
               ...params.inputProps,
-              autoComplete: "new-password", // disable autocomplete and autofill
             }}
           />
         )}
