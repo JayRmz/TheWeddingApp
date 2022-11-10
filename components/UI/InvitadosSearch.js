@@ -35,10 +35,6 @@ export default function InvitadosSearch({ invitados, onSelectInv }) {
         sx={{ width: 270 }}
         options={invitados}
         autoHighlight
-        filterOptions={(value) => {
-          console.log("FILTER OPRIONS val:", value);
-          return value;
-        }}
         onSelect={onSelect}
         onChange={onChange}
         getOptionLabel={(option) => option.name}

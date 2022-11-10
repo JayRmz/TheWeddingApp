@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import GuestCard from "../components/UI/GuestCard";
 import ConfirmationGuest from "../components/UI/ConfirmationGuest";
 import Router from "next/router";
+import GuestsTables from "../components/UI/GuestsTables";
+import GuestTableCard from "../components/UI/GuestTableCard";
+import Image from "next/image";
 
 export default function MiMesa() {
   const [invitados, setInvitados] = useState([]);
@@ -43,8 +46,7 @@ export default function MiMesa() {
   }, []);
 
   const selectInvHandler = (inv) => {
-    console.log("selected: ", inv);
-    console.log(invitados.filter((guest) => guest.name == inv));
+    console.log("Selected INV: ", inv);
     setSelectedGuestInfo(invitados.filter((guest) => guest.name == inv));
   };
 
@@ -72,12 +74,27 @@ export default function MiMesa() {
       <p className="px-5 text-md font-medium text-center  pt-5 text-black-txt">
         Ahora puedes escribir tu nombre y ver tu número de mesa
       </p>
-      <div className=" p-5 self-center grid grid-cols-1 md:grid-cols-2 bg-pink-txt h-96">
-        <InvitadosSearch
-          invitados={invitados}
-          horarios={horarios}
-          onSelectInv={selectInvHandler}
-        />
+      <div className=" p-5 self-center grid grid-cols-1 md:grid-cols-2 bg-pink-txt  ">
+        <div>
+          <GuestsTables
+            invitados={invitados}
+            horarios={horarios}
+            onSelectInv={selectInvHandler}
+          />
+          {selectedGuestInfo.length > 0 ? (
+            <GuestTableCard guest={selectedGuestInfo[0]} />
+          ) : null}
+        </div>
+        <div>
+          {selectedGuestInfo.length > 0 ? (
+            <Image
+              src={"/img/mesas.jpeg"}
+              alt="Crouis"
+              width={400}
+              height={350}
+            />
+          ) : null}
+        </div>
       </div>
     </ContainerBlock>
   );
