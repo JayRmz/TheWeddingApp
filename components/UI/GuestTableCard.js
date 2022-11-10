@@ -1,12 +1,6 @@
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 
 export default function GuestTableCard({ guest = {} }) {
   return (
@@ -20,7 +14,7 @@ export default function GuestTableCard({ guest = {} }) {
           {guest.name}
         </Typography>
         <Typography variant="h8" component="div">
-          tu y {guest.acompanantes}
+          Tú y {guest.acompanantes}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           tienen la mesa: {guest.mesa}
