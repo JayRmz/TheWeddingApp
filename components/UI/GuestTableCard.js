@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 export default function GuestTableCard({ guest = {} }) {
   return (
     <Card
-      sx={{ maxWidth: 250, height: 200 }}
+      sx={{ maxWidth: 250, minHeight: 200 }}
       color="pink"
       className="m-2 bg-pink-100"
     >
