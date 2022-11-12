@@ -13,12 +13,25 @@ export default function GuestTableCard({ guest = {} }) {
         <Typography variant="h5" component="div">
           {guest.name}
         </Typography>
-        <Typography variant="h8" component="div">
-          Tú y {guest.acompanantes}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          tienen la mesa: {guest.mesa}
-        </Typography>
+        {guest.acompanantes != "Sin Acompañante" ? (
+          <Typography variant="h8" component="div">
+            Tú y {guest.acompanantes}
+          </Typography>
+        ) : (
+          <Typography variant="h8" component="div">
+            Tú
+          </Typography>
+        )}
+        {guest.acompanantes != "Sin Acompañante" ? (
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            tienen la mesa: {guest.mesa}
+          </Typography>
+        ) : (
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            tienes la mesa: {guest.mesa}
+          </Typography>
+        )}
+
         <Typography variant="subtitle1" className="">
           Recuerda, les esperamos: {guest.horario}
         </Typography>
